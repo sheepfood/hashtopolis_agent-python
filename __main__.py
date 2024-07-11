@@ -212,9 +212,10 @@ def loop():
             if not binaryDownload.check_preprocessor(task):
                 continue
         # check if all required files are present
-        if not files.check_files(task.get_task()['files'], task.get_task()['taskId']):
-            task.reset_task()
-            continue
+        #We dont want this since out files are very large. We just point to existing files.
+        #if not files.check_files(task.get_task()['files'], task.get_task()['taskId']):
+        #    task.reset_task()
+        #    continue
         # download the hashlist for the task
         if task_change and not hashlist.load_hashlist(task.get_task()['hashlistId']):
             task.reset_task()
